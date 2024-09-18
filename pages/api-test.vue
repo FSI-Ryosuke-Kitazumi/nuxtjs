@@ -4,10 +4,5 @@
 </template>
 
 <script setup lang="ts">
-const nuxtApp = useNuxtApp();
-
-const { data } = await useFetch("http://localhost:8000/", {
-  key: "api_cache_key_xxx",
-  getCachedData: (key) => nuxtApp.payload.data[key] || nuxtApp.static.data[key],
-});
+const { data } = await apiClient("/api/hello");
 </script>
