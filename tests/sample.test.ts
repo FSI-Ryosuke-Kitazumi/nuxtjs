@@ -1,8 +1,8 @@
 import { expect, test } from "vitest";
 import Sample from "../components/Sample.vue";
-import { mountSuspended } from "@nuxt/test-utils/runtime";
+import { mount } from "@vue/test-utils";
 
-test("my test", async () => {
-  const component = await mountSuspended(Sample);
-  expect(component.text()).toMatchInlineSnapshot(`"sample2"`);
+test("my test", () => {
+  const component = mount(Sample);
+  expect(component.html()).toMatchSnapshot();
 });
