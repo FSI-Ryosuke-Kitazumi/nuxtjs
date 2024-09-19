@@ -1,5 +1,4 @@
-import { server } from "~/mocks/node";
-
-export default defineNuxtPlugin(() => {
+export default defineNuxtPlugin(async () => {
+  const { server } = await import("~/mocks/node");
   server.listen();
 });

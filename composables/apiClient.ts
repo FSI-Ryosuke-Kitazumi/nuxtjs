@@ -1,8 +1,11 @@
-export const apiClient = (url: string) => {
+export default function apiClient<T>(url: string) {
   const nuxtApp = useNuxtApp();
-  
-  return useFetch(url, {
+  const config = useRuntimeConfig();
+
+  return useFetch<T>(url, {
     key: url,
-    getCachedData: (key) => nuxtApp.payload.data[key] || nuxtApp.static.data[key],
+    getCachedData: (key) =>
+      nuxtApp.payload.data[key] || nuxtApp.static.data[key],
+    baseURL: config.public.apiBase,
   });
 }
