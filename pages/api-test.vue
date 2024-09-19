@@ -4,5 +4,5 @@
 </template>
 
 <script setup lang="ts">
-const { data } = await apiClient("/api/hello");
+const { data } = await apiClient("https://example.com/user");
 </script>
