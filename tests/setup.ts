@@ -5,7 +5,7 @@ import { createFetch } from "ofetch";
 beforeAll(() => {
   server.listen();
 
-  // createFetchを使わないとMSWのモック化の対象にならない
+  // NOTE: createFetchを使わないとMSWのモック化の対象にならず、testでモックAPIが使えない
   globalThis.$fetch = createFetch({
     fetch: globalThis.fetch,
     Headers: globalThis.Headers,
