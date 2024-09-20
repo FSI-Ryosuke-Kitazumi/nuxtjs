@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.4",
+    "axios": "^1.7.7",
     "nuxt": "^3.12.4",
     "vue": "latest"
   },

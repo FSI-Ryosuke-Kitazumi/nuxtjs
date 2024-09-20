@@ -1,7 +1,7 @@
-import type { User } from "~/mocks/handlers";
+import type { User } from "~/mocks/api/user";
 
 export function useCallApi() {
   const config = useRuntimeConfig();
 
-  return apiClient<User>("/user");
+  return apiFetch<User>("/user");
 }

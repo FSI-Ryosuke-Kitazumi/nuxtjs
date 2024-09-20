@@ -65,5 +65,5 @@ const transition = () => {
 };
 
 // api-test
-const { data } = await apiClient("/api/hello");
+const { data } = await apiFetch("/api/hello");
 </script>
