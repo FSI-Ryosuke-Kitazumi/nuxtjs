@@ -1,3 +1,32 @@
+<script setup lang="ts">
+const taskNameList = ref<string[]>(["vue", "vue3", "nuxt3"]);
+const taskName = ref<string>("");
+
+const addTask = () => {
+  if (taskName.value === "") return;
+
+  taskNameList.value.push(taskName.value);
+  taskName.value = "";
+};
+
+const completeTask = (completeTaskName: string) => {
+  taskNameList.value = taskNameList.value.filter(
+    (taskName) => taskName !== completeTaskName,
+  );
+};
+
+// color
+const color = useColor();
+
+// transition
+const transition = () => {
+  navigateTo("state-test");
+};
+
+// api-test
+const { data } = await apiFetch("/api/hello");
+</script>
+
 <template>
   <div class="p-2">
     <h1>TODO APP</h1>
@@ -38,32 +67,3 @@
     <p>{{ data }}</p>
   </div>
 </template>
-
-<script setup lang="ts">
-const taskNameList = ref<string[]>(["vue", "vue3", "nuxt3"]);
-const taskName = ref<string>("");
-
-const addTask = () => {
-  if (taskName.value === "") return;
-
-  taskNameList.value.push(taskName.value);
-  taskName.value = "";
-};
-
-const completeTask = (completeTaskName: string) => {
-  taskNameList.value = taskNameList.value.filter(
-    (taskName) => taskName !== completeTaskName,
-  );
-};
-
-// color
-const color = useColor();
-
-// transition
-const transition = () => {
-  navigateTo("state-test");
-};
-
-// api-test
-const { data } = await apiFetch("/api/hello");
-</script>
