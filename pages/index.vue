@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useFetchUser } from "~/composables/user/useFetchUser";
+
 const taskNameList = ref<string[]>(["vue", "vue3", "nuxt3"]);
 const taskName = ref<string>("");
 
@@ -24,7 +26,7 @@ const transition = () => {
 };
 
 // api-test
-const { data } = await apiFetch("/api/hello");
+const { data } = await useFetchUser();
 
 console.log(constants.todos.TITLE);
 </script>
@@ -66,6 +68,6 @@ console.log(constants.todos.TITLE);
   </div>
 
   <div>
-    <p>{{ data }}</p>
+    <p>{{ data?.firstName }}</p>
   </div>
 </template>

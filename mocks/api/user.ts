@@ -1,11 +1,5 @@
 import { http, HttpResponse } from "msw";
 
-export type User = {
-  id: string;
-  firstName: string;
-  lastName: string;
-};
-
 export const users = [
   // Intercept "GET https://example.com/user" requests...
   http.get("/user", () => {

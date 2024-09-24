@@ -15,7 +15,11 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ["@pinia/nuxt", "@nuxt/test-utils/module"],
+  modules: [
+    "@pinia/nuxt",
+    "@nuxt/test-utils/module",
+    "@hebilicious/vue-query-nuxt",
+  ],
   pinia: {
     storesDirs: ["./stores/**"],
   },

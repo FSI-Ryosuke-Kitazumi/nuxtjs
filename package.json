@@ -11,7 +11,9 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@hebilicious/vue-query-nuxt": "^0.3.0",
     "@pinia/nuxt": "^0.5.4",
+    "@tanstack/vue-query": "^5.56.2",
     "axios": "^1.7.7",
     "nuxt": "^3.12.4",
     "vue": "latest"
