@@ -25,6 +25,8 @@ const transition = () => {
 
 // api-test
 const { data } = await apiFetch("/api/hello");
+
+console.log(constants.todos.TITLE);
 </script>
 
 <template>
