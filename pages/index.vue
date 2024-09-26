@@ -13,7 +13,7 @@ const addTask = () => {
 
 const completeTask = (completeTaskName: string) => {
   taskNameList.value = taskNameList.value.filter(
-    (taskName) => taskName !== completeTaskName,
+    (taskName) => taskName !== completeTaskName
   );
 };
 
@@ -32,42 +32,48 @@ console.log(constants.todos.TITLE);
 </script>
 
 <template>
-  <div class="p-2">
-    <h1>TODO APP</h1>
-    <h2>タスク追加</h2>
+  <div class="pa-2">
+    <div>
+      <h1>TODO APP</h1>
+      <h2>タスク追加</h2>
 
-    <input
-      type="text"
-      v-model="taskName"
-      class="rounded border border-gray-500 px-2 py-1"
-    />
+      <input v-model="taskName" type="text" />
 
-    <button @click="addTask()">追加</button>
+      <button @click="addTask()">追加</button>
 
-    <h2>タスク名</h2>
-    <div v-for="taskName in taskNameList" :key="taskName">
-      <span>{{ taskName }}</span>
-      <button @click="completeTask(taskName)">完了</button>
+      <h2>タスク名</h2>
+      <div v-for="taskName in taskNameList" :key="taskName">
+        <span>{{ taskName }}</span>
+        <button @click="completeTask(taskName)">完了</button>
+      </div>
     </div>
-  </div>
 
-  <div class="p-2">
-    color
-    <p>{{ color }}</p>
-  </div>
+    <div>
+      color
+      <p>{{ color }}</p>
+    </div>
 
-  <div>
-    <h2>transition</h2>
-    <p>
-      <nuxt-link to="state-test" class="text-cyan-500">state-test</nuxt-link>
-    </p>
-    <p>
-      <nuxt-link to="api-test" class="text-cyan-500">api-test</nuxt-link>
-    </p>
-    <button @click="transition">button</button>
-  </div>
+    <div>
+      <h2>transition</h2>
+      <p>
+        <nuxt-link to="state-test" class="text-cyan-500">state-test</nuxt-link>
+      </p>
+      <p>
+        <nuxt-link to="api-test" class="text-cyan-500">api-test</nuxt-link>
+      </p>
+      <p>
+        <nuxt-link to="websocket" class="text-cyan-500">websocket</nuxt-link>
+      </p>
+      <p>
+        <nuxt-link to="todo" class="text-cyan-500">todo</nuxt-link>
+      </p>
+      <button @click="transition">button</button>
+    </div>
 
-  <div>
-    <p>{{ data?.firstName }}</p>
+    <div>
+      <p>{{ data?.firstName }}</p>
+    </div>
+
+    <Sample title="qwer">asdf</Sample>
   </div>
 </template>
