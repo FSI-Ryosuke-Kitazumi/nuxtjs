@@ -7,7 +7,7 @@ export default withNuxt({
       "error",
       {
         html: {
-          void: "never",
+          void: "always",
           normal: "always",
           component: "always",
         },

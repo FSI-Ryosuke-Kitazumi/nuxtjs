@@ -1,12 +1,14 @@
-import type { Todos } from "~/types/api/todos";
+import type { Todo } from "~/types/api/todos";
 
 export function usePostTodos() {
   const url = "/todos";
 
-  return useMutation<Todos>({
-    mutationFn: () =>
-      customFetch(url, {
+  return useMutation({
+    mutationFn: (todo: Todo) => {
+      return todoFetch<Todo>(url, {
         method: "POST",
-      }),
+        body: todo,
+      });
+    },
   });
 }

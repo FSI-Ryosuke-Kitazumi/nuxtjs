@@ -1,3 +1,5 @@
-export type Todos = {
-  title: string;
+export type Todo = {
+  id: string;
+  name: string;
+  checked: boolean;
 };
