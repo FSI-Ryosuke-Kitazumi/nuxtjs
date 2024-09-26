@@ -1,3 +1,4 @@
+<!-- RULE: script, template, styleの順で並べる -->
 <script setup lang="ts">
 import { useFetchTodos } from "~/composables/todos/useFetchTodos";
 import { usePostTodos } from "~/composables/todos/usePostTodos";
@@ -5,12 +6,13 @@ import type { Todo } from "~/types/api/todos";
 import { v4 as uuidv4 } from "uuid";
 import { useUpdateTodos } from "~/composables/todos/useUpdateTodos";
 
-const { data: todos, refetch } = useFetchTodos();
+const { data: todos, refetch: refetchTodos } = useFetchTodos();
 const { mutate: addTodo } = usePostTodos();
 const { mutate: updateTodo } = useUpdateTodos();
 
-const input = ref();
+const input = ref("");
 
+// RULE: アロー関数ではなくfunctionを使う
 function handleAddTodo() {
   const newTodo: Todo = {
     id: uuidv4(),
@@ -19,10 +21,11 @@ function handleAddTodo() {
   };
 
   addTodo(newTodo, {
-    onSuccess: () => refetch(),
+    onSuccess: () => refetchTodos(),
   });
 }
 
+// RULE: イベントの関数名の頭にhandleをつける
 function handleUpdateTodo(id: string, e: Event) {
   if (!(e.target instanceof HTMLInputElement)) return;
 
@@ -39,11 +42,16 @@ function handleUpdateTodo(id: string, e: Event) {
     </div>
     <div v-for="todo in todos" :key="todo.id">
       <p>
+        <!-- RULE: クリックイベントなどはアロー関数を使ってもいい -->
         <input
+          :id="`todo-${todo.id}`"
           :value="todo.checked"
           type="checkbox"
           @change="(e) => handleUpdateTodo(todo.id, e)"
-        />{{ todo.name }}
+        />
+        <label :for="`todo-${todo.id}`" class="ml-2">
+          {{ todo.name }}
+        </label>
       </p>
     </div>
   </v-container>
